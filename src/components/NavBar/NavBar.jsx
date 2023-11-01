@@ -21,7 +21,7 @@ const NavBar = ({ cartCount }) => {
                 </Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Inicio</Nav.Link>
+                        <Nav.Link href="#home" active>Inicio</Nav.Link>
                         <Nav.Link href="#menu">Menú</Nav.Link>
                         <Nav.Link href="#events">Eventos</Nav.Link>
                         <Nav.Link href="#contact">Contactos</Nav.Link>
