@@ -1,4 +1,4 @@
-function CartWidget({ count }) {
+export function CartWidget({ count }) {
     return (
         <div>
             <i className="bi bi-cart"></i>
@@ -7,5 +7,3 @@ function CartWidget({ count }) {
         </div>
     )
 }
-
-export default CartWidget;

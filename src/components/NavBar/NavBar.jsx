@@ -1,10 +1,10 @@
 import icon from '../../assets/logo.svg';
-import CartWidget from '../CartWidget/CartWidget';
+import { CartWidget } from '../CartWidget';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-const NavBar = ({ cartCount }) => {
+export const NavBar = ({ cartCount }) => {
 
     return (
         <Navbar className="bg-body-tertiary sticky-top z-index-1 shadow">
@@ -32,5 +32,3 @@ const NavBar = ({ cartCount }) => {
         </Navbar>
     )
 }
-
-export default NavBar;

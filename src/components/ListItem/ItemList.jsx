@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-function ItemList({ item }) {
+export function ItemList({ item }) {
 
     function handleClick() {
         console.log(`Item "${item.name}" añadido al carrito`);
@@ -10,11 +10,11 @@ function ItemList({ item }) {
 
     return (
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={item.srcImage} />
+            <Card.Img variant="top" src={item.img} />
             <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>
-                    {item.description}
+                    {item.details}
                 </Card.Text>
                 <Button variant="primary" onClick={handleClick}>
                     <i className="bi bi-cart-plus"></i>
@@ -25,5 +25,3 @@ function ItemList({ item }) {
         </Card>
     );
 }
-
-export default ItemList;

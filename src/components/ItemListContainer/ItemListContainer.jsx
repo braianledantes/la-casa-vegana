@@ -1,22 +1,15 @@
-import ItemList from "../ListItem/ItemList";
-import img from '../../assets/hamburguesa-vegana.png'
+import { ItemList } from "../ListItem";
 import { Container } from "react-bootstrap";
 
-function ItemListContainer() {
-    const item = {
-        name: "Hamburguesa",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        srcImage: img
-    }
+export function ItemListContainer({ menuList }) {
+
+    console.log(menuList);
+
     return (
         <Container className="mt-4 mb-4 d-flex flex-row flex-wrap gap-4 justify-content-center">
-            <ItemList item={item} />
-            <ItemList item={item} />
-            <ItemList item={item} />
-            <ItemList item={item} />
-            <ItemList item={item} />
+            {menuList.map(item => {
+                return <ItemList key={item.id} item={item} />
+            })}
         </Container>
     )
 }
-
-export default ItemListContainer;
