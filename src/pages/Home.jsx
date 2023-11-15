@@ -1,3 +1,10 @@
+import { ItemListContainer, Loader } from "../components"
+import { useCompleteMenu } from "../hooks/useMenu"
+
 export function Home() {
-    return <h1>Home</h1>
+    const { data, loading, error } = useCompleteMenu()
+
+    if (loading) return <Loader />
+    if (error) return <div>Ha ocurrido un error {error}</div>
+    return <ItemListContainer menuList={data} />
 }
