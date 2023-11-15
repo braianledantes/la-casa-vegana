@@ -1,15 +1,9 @@
-import { useState } from 'react'
 import './App.css'
-import { MainLayout } from './layout'
-import { Home } from './pages/Home'
+import { MainRouter } from './router/MainRouter';
 
 function App() {
-  const [count, setCount] = useState(3)
-
   return (
-    <MainLayout cartCount={count}>
-      <Home />
-    </MainLayout>
+    <MainRouter />
   )
 }
 
