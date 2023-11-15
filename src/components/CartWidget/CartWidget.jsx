@@ -1,3 +1,9 @@
+import PropTypes from "prop-types";
+
+CartWidget.propTypes = {
+    count: PropTypes.number.isRequired
+}
+
 export function CartWidget({ count }) {
     return (
         <div>

@@ -4,7 +4,7 @@ import { MainLayout } from './layout'
 import { Home } from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(12)
+  const [count, setCount] = useState(3)
 
   return (
     <MainLayout cartCount={count}>

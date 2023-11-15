@@ -3,8 +3,13 @@ import { CartWidget } from '../CartWidget';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import PropTypes from "prop-types";
 
-export const NavBar = ({ cartCount }) => {
+NavBar.propTypes = {
+    cartCount: PropTypes.number.isRequired
+}
+
+export function NavBar({ cartCount }) {
 
     return (
         <Navbar className="bg-body-tertiary sticky-top z-index-1 shadow">
