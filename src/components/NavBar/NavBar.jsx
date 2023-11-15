@@ -6,12 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
+import { useAllCategories } from "../../hooks/useMenu";
 
 NavBar.propTypes = {
     cartCount: PropTypes.number.isRequired
 }
 
-export function NavBar({ cartCount }) {
+export function NavBar({ cartCount = 0 }) {
+    const { data } = useAllCategories()
 
     return (
         <Navbar collapseOnSelect expand="md" className="bg-body-tertiary sticky-top z-index-1 shadow">
@@ -33,12 +35,9 @@ export function NavBar({ cartCount }) {
                         <NavDropdown title="Menú" id="collapsible-nav-dropdown">
                             <NavDropdown.Item as={Link} to={'/menu'} href='#'>Todo</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item >
-                                Empanadas
-                            </NavDropdown.Item>
-                            <NavDropdown.Item>
-                                Burgers
-                            </NavDropdown.Item>
+                            {data.map(category => {
+                                return <NavDropdown.Item key={category} as={Link} to={`/category/${category}`} >{category}</NavDropdown.Item>
+                            })}
                         </NavDropdown>
                         <Nav.Link as={Link} to={'/events'} href='#'>Eventos</Nav.Link>
                         <Nav.Link as={Link} to={'/contact'} href='#'>Contacto</Nav.Link>

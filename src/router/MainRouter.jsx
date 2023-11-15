@@ -9,6 +9,7 @@ export function MainRouter() {
                 <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/menu' element={<Menu />} />
+                    <Route exact path='/category/:categoryName' element={<Menu />} />
                     <Route exact path='/menu/:id' element={<MenuItemDetails />} />
                     <Route exact path='/events' element={<Events />} />
                     <Route exact path='/contact' element={<Contact />} />
