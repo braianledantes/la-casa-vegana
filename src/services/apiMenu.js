@@ -13,7 +13,7 @@ const menu = [
         id: "2",
         name: "Burguer Pizza",
         details: "Pizza con queso de papas/maní/girasol, morrón rojo, aceitunas, cebolla, medallón de burger de lentejas, jamón y queso vegano",
-        category: "Burger",
+        category: "Burguer",
         price: "9500.00",
         img: "https://queresto.com/uploads/images/316540_1618331475380_153.jpeg"
     },
@@ -43,11 +43,27 @@ export function getCompleteMenu() {
     })
 }
 
+export function getCategories() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            const categories = new Set();
+            menu.forEach(item => {
+                categories.add(item.category);
+            })
+            const result = [...categories]
+            resolve({ data: result })
+        }, 1000);
+    })
+}
+
 export function getMenuByCategory(category) {
     return new Promise(resolve => {
         setTimeout(() => {
-            const result = menu.filter(item => item.category === category)
-            resolve({ data: result })
+            if (category) {
+                const result = menu.filter(item => item.category === category)
+                resolve({ data: result })
+            }
+            resolve({ data: menu })
         }, 2000);
     })
 }
