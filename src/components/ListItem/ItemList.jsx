@@ -2,9 +2,11 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { compactString } from '../../utils/utils';
 import PropTypes from "prop-types";
+import { Link } from 'react-router-dom';
 
 ItemList.propTypes = {
     item: PropTypes.shape({
+        id: PropTypes.number,
         name: PropTypes.string,
         details: PropTypes.string,
         img: PropTypes.string
@@ -12,11 +14,6 @@ ItemList.propTypes = {
 }
 
 export function ItemList({ item }) {
-
-    function handleClick() {
-        console.log(`Item "${item.name}" añadido al carrito`);
-    }
-
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={item.img} style={{height: "250px", objectFit: "cover"}}/>
@@ -25,10 +22,8 @@ export function ItemList({ item }) {
                 <Card.Text>
                     {compactString(item.details, 30)}
                 </Card.Text>
-                <Button variant="primary" onClick={handleClick}>
-                    <i className="bi bi-cart-plus"></i>
-                    {' '}
-                    Agregar al carrito
+                <Button variant="primary" as={Link} to={`/menu/${item.id}`}>
+                    Ver detalles
                 </Button>
             </Card.Body>
         </Card>

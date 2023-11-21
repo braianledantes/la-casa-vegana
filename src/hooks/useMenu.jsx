@@ -53,7 +53,7 @@ export const useMenuCategory = (category) => {
 
     useEffect(() => {
         setLoading(true)
-        getMenuByCategory(category)
+        getMenuByCategory({category})
             .then(res => setData(res.data))
             .catch(err => setError(err))
             .finally(() => setLoading(false))

@@ -39,7 +39,7 @@ export function getCompleteMenu() {
     return new Promise(resolve => {
         setTimeout(() => {
             resolve({ data: menu })
-        }, 2000);
+        }, Math.random() * 5000);
     })
 }
 
@@ -52,11 +52,11 @@ export function getCategories() {
             })
             const result = [...categories]
             resolve({ data: result })
-        }, 1000);
+        }, Math.random() * 5000);
     })
 }
 
-export function getMenuByCategory(category) {
+export function getMenuByCategory({category}) {
     return new Promise(resolve => {
         setTimeout(() => {
             if (category) {
@@ -64,7 +64,7 @@ export function getMenuByCategory(category) {
                 resolve({ data: result })
             }
             resolve({ data: menu })
-        }, 2000);
+        }, Math.random() * 5000);
     })
 }
 
@@ -78,6 +78,6 @@ export function getMenuItemById(id) {
             }
 
             resolve({ data: result })
-        }, 2000);
+        }, Math.random() * 5000);
     })
 }
