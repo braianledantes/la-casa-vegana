@@ -1,6 +1,5 @@
 export * from './Home'
 export * from './Menu'
-export * from './ItemDetailContainer'
 export * from './Events'
 export * from './Contact'
 export * from './CartPreview'

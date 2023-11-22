@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MainLayout } from "../layout";
-import { CartPreview, Contact, Events, Home, Menu, ItemDetailContainer } from "../pages";
+import { CartPreview, Contact, Events, Home, Menu } from "../pages";
+import { ItemDetailContainer } from "../components/ItemDetailContainer";
 
 export function MainRouter() {
     return (

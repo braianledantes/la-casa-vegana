@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
-import { useMenuItem } from "../hooks/useMenu"
-import { compactString } from "../utils/utils"
-import { Loader } from "../components"
+import { useMenuItem } from "../../hooks/useMenu"
+import { compactString } from "../../utils/utils"
+import { Loader } from ".."
 import { Card } from "react-bootstrap"
 
 export function ItemDetailContainer() {
