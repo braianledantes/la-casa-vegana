@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MainLayout } from "../layout";
-import { CartPreview, Contact, Events, Home, Menu, MenuItemDetails } from "../pages";
+import { CartPreview, Contact, Events, Home, Menu, ItemDetailContainer } from "../pages";
 
 export function MainRouter() {
     return (
@@ -10,7 +10,7 @@ export function MainRouter() {
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/menu' element={<Menu />} />
                     <Route exact path='/category/:categoryName' element={<Menu />} />
-                    <Route exact path='/menu/:id' element={<MenuItemDetails />} />
+                    <Route exact path='/menu/:id' element={<ItemDetailContainer />} />
                     <Route exact path='/events' element={<Events />} />
                     <Route exact path='/contact' element={<Contact />} />
                     <Route exact path='/cart' element={<CartPreview />} />
