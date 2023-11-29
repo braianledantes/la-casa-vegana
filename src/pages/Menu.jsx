@@ -6,7 +6,7 @@ export function Menu() {
     const { categoryName } = useParams()
     const { data, loading, error } = useMenuCategory(categoryName)
 
-    if (error) return <div>Ha ocurrido un error {error}</div>
+    if (error) return <div>Ha ocurrido un error {error.error}</div>
 
     if (loading) return <Loader />
 

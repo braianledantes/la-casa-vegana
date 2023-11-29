@@ -60,7 +60,7 @@ export function getMenuByCategory({category}) {
     return new Promise(resolve => {
         setTimeout(() => {
             if (category) {
-                const result = menu.filter(item => item.category === category)
+                const result = menu.filter(item => item.category == category)
                 resolve({ data: result })
             }
             resolve({ data: menu })
@@ -71,8 +71,7 @@ export function getMenuByCategory({category}) {
 export function getMenuItemById(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            const result = menu.find(item => item.id === id)
-
+            const result = menu.find(item => item.id == id)
             if (!result) {
                 reject({ error: `Menu Item with id ${id} don't found` })
             }

@@ -13,25 +13,27 @@ export function ItemDetailContainer() {
 
     function handleAddProduct() {
         const product = data;
-        addItem({ product })
+        addItem({ product });
     }
 
     if (loading) return <Loader />
-    if (error) return <div>Ha ocurrido un error {error}</div>
-    return <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
-
-        <Card >
-            <Card.Img variant="top" src={data.img} style={{ 
-                width: "90vw",
-                minHeight: "500px",
-                maxWidth: "600px", maxHeight: "600px", objectFit: "cover" }} />
-            <Card.Body>
-                <Card.Title>{data.name}</Card.Title>
-                <Card.Text>
-                    {compactString(data.details, 30)}
-                </Card.Text>
-                <Button variant="success" onClick={handleAddProduct}>Agrgar al carrito</Button>
-            </Card.Body>
-        </Card>
-    </div>
+    if (error) return (<div>Ha ocurrido un error {error.error}</div>)
+    return (
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
+            <Card >
+                <Card.Img variant="top" src={data.img} style={{
+                    width: "90vw",
+                    minHeight: "500px",
+                    maxWidth: "600px", maxHeight: "600px", objectFit: "cover"
+                }} />
+                <Card.Body>
+                    <Card.Title>{data.name}</Card.Title>
+                    <Card.Text>
+                        {compactString(data.details, 30)}
+                    </Card.Text>
+                    <Button variant="success" onClick={handleAddProduct}>Agrgar al carrito</Button>
+                </Card.Body>
+            </Card>
+        </div>
+    )
 }
