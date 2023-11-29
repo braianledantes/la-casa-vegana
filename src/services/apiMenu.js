@@ -2,7 +2,7 @@
 
 const menu = [
     {
-        id: "1",
+        id: 1,
         name: "Completa",
         details: "Burger de pernil, jamón, queso vegano, lechuga, tomate y pepino",
         category: "Burguer",
@@ -10,7 +10,7 @@ const menu = [
         img: "https://queresto.com/uploads/images/57139_1618330075114_584.jpeg"
     },
     {
-        id: "2",
+        id: 2,
         name: "Burguer Pizza",
         details: "Pizza con queso de papas/maní/girasol, morrón rojo, aceitunas, cebolla, medallón de burger de lentejas, jamón y queso vegano",
         category: "Burguer",
@@ -18,7 +18,7 @@ const menu = [
         img: "https://queresto.com/uploads/images/316540_1618331475380_153.jpeg"
     },
     {
-        id: "3",
+        id: 3,
         name: "Soja",
         details: "Rellenas de verduras salteadas con soja texturizada",
         category: "Empanadas",
@@ -26,7 +26,7 @@ const menu = [
         img: "https://queresto.com/uploads/images/57106_1618287460335_994.jpeg"
     },
     {
-        id: "4",
+        id: 4,
         name: "Choclo",
         details: "Rellenas de choclo sabor huevo y cebollitas",
         category: "Empanadas",
