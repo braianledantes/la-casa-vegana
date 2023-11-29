@@ -6,10 +6,10 @@ MainLayout.propTypes = {
     cartCount: PropTypes.number
 }
 
-export function MainLayout({ children, cartCount }) {
+export function MainLayout({ children }) {
     return (
         <>
-            <NavBar cartCount={cartCount} />
+            <NavBar />
             {children}
         </>
     )

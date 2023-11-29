@@ -4,14 +4,14 @@ import { useMenuCategory } from "../hooks/useMenu"
 
 export function Menu() {
     const { categoryName } = useParams()
-    const { data, loading, error } = useMenuCategory(categoryName)
+    const { products, loading, error } = useMenuCategory(categoryName)
 
-    if (error) return <div>Ha ocurrido un error {error}</div>
+    if (error) return <div>Ha ocurrido un error {error.error}</div>
 
     if (loading) return <Loader />
 
     return <>
         <h2 style={{textAlign: "center", marginTop:"1rem"}}>{categoryName}</h2>
-        <ItemListContainer menuList={data} />
+        <ItemListContainer menuList={products} />
     </>
 }

@@ -6,7 +6,7 @@ import { ItemDetailContainer } from "../components/ItemDetailContainer";
 export function MainRouter() {
     return (
         <BrowserRouter>
-            <MainLayout cartCount={2}>
+            <MainLayout>
                 <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/menu' element={<Menu />} />

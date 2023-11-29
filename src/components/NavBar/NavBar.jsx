@@ -3,17 +3,12 @@ import { CartWidget } from '../CartWidget';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 import { useAllCategories } from "../../hooks/useMenu";
 
-NavBar.propTypes = {
-    cartCount: PropTypes.number.isRequired
-}
-
-export function NavBar({ cartCount = 0 }) {
-    const { data } = useAllCategories()
+export function NavBar() {
+    const { categories } = useAllCategories()
 
     return (
         <Navbar collapseOnSelect expand="md" className="bg-body-tertiary sticky-top z-index-1 shadow">
@@ -35,8 +30,8 @@ export function NavBar({ cartCount = 0 }) {
                         <NavDropdown title="Menú" id="collapsible-nav-dropdown">
                             <NavDropdown.Item as={Link} to={'/menu'} href='#'>Todo</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            {data.map(category => {
-                                return <NavDropdown.Item key={category} as={Link} to={`/category/${category}`} >{category}</NavDropdown.Item>
+                            {categories.map(category => {
+                                return <NavDropdown.Item key={category.id} as={Link} to={`/category/${category.name}`} >{category.name}</NavDropdown.Item>
                             })}
                         </NavDropdown>
                         <Nav.Link as={Link} to={'/events'} href='#'>Eventos</Nav.Link>
@@ -44,7 +39,7 @@ export function NavBar({ cartCount = 0 }) {
                     </Nav>
                     <Nav>
                         <Nav.Link as={Link} to={'/cart'} href='#'>
-                            <CartWidget count={cartCount} />
+                            <CartWidget />
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

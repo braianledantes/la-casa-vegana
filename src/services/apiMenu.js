@@ -1,83 +1,55 @@
-// import axios from "axios"
+import { initializeApp } from "firebase/app";
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    doc,
+    getDoc,
+    query,
+    where
+} from "firebase/firestore";
 
-const menu = [
-    {
-        id: "1",
-        name: "Completa",
-        details: "Burger de pernil, jamón, queso vegano, lechuga, tomate y pepino",
-        category: "Burguer",
-        price: "3500.00",
-        img: "https://queresto.com/uploads/images/57139_1618330075114_584.jpeg"
-    },
-    {
-        id: "2",
-        name: "Burguer Pizza",
-        details: "Pizza con queso de papas/maní/girasol, morrón rojo, aceitunas, cebolla, medallón de burger de lentejas, jamón y queso vegano",
-        category: "Burguer",
-        price: "9500.00",
-        img: "https://queresto.com/uploads/images/316540_1618331475380_153.jpeg"
-    },
-    {
-        id: "3",
-        name: "Soja",
-        details: "Rellenas de verduras salteadas con soja texturizada",
-        category: "Empanadas",
-        price: "9500.00",
-        img: "https://queresto.com/uploads/images/57106_1618287460335_994.jpeg"
-    },
-    {
-        id: "4",
-        name: "Choclo",
-        details: "Rellenas de choclo sabor huevo y cebollitas",
-        category: "Empanadas",
-        price: "9500.00",
-        img: "https://queresto.com/uploads/images/360959_1623677653847_405.jpeg"
-    }
-]
+const firebaseConfig = {
+    apiKey: "AIzaSyDrKK30RiK8NwIqaTp3hfskTOC2-KbvuwU",
+    authDomain: "la-casa-vegana.firebaseapp.com",
+    projectId: "la-casa-vegana",
+    storageBucket: "la-casa-vegana.appspot.com",
+    messagingSenderId: "418996740139",
+    appId: "1:418996740139:web:bebbd063f1b3b1f46d0a6e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const productsCollectionName = "products";
+const categoriesCollectionName = "categories";
 
 export function getCompleteMenu() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve({ data: menu })
-        }, Math.random() * 5000);
-    })
+    return getDocs(collection(db, productsCollectionName))
+        .then(snapshot => {
+            return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        })
 }
 
 export function getCategories() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            const categories = new Set();
-            menu.forEach(item => {
-                categories.add(item.category);
-            })
-            const result = [...categories]
-            resolve({ data: result })
-        }, Math.random() * 5000);
-    })
+    return getDocs(collection(db, categoriesCollectionName))
+        .then(snapshot => {
+            return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        })
 }
 
-export function getMenuByCategory({category}) {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            if (category) {
-                const result = menu.filter(item => item.category === category)
-                resolve({ data: result })
-            }
-            resolve({ data: menu })
-        }, Math.random() * 5000);
-    })
+export function getMenuByCategory({ category }) {
+    const q = query(
+        collection(db, productsCollectionName),
+        where("category", "==", category)
+    )
+    return getDocs(q)
+        .then(snapshot => {
+            return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
+        })
 }
 
 export function getMenuItemById(id) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const result = menu.find(item => item.id === id)
-
-            if (!result) {
-                reject({ error: `Menu Item with id ${id} don't found` })
-            }
-
-            resolve({ data: result })
-        }, Math.random() * 5000);
-    })
+    return getDoc(doc(db, productsCollectionName, id))
+        .then(snapshot => ({ id: snapshot.id, ...snapshot.data() }))
 }
