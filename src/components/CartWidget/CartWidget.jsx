@@ -1,15 +1,14 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { CartContext } from "../../context";
 
-CartWidget.propTypes = {
-    count: PropTypes.number.isRequired
-}
+export function CartWidget() {
+    const { cantItems } = useContext(CartContext);
 
-export function CartWidget({ count }) {
     return (
         <div>
             <i className="bi bi-cart"></i>
             {' '}
-            <span>{count}</span>
+            <span>{cantItems}</span>
         </div>
     )
 }

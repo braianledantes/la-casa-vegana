@@ -2,11 +2,19 @@ import { useParams } from "react-router-dom"
 import { useMenuItem } from "../../hooks/useMenu"
 import { compactString } from "../../utils/utils"
 import { Loader } from ".."
-import { Card } from "react-bootstrap"
+import { Button, Card } from "react-bootstrap"
+import { useContext } from "react"
+import { CartContext } from "../../context"
 
 export function ItemDetailContainer() {
-    const { id } = useParams()
-    const { data, loading, error } = useMenuItem(id)
+    const { id } = useParams();
+    const { data, loading, error } = useMenuItem(id);
+    const { addItem } = useContext(CartContext);
+
+    function handleAddProduct() {
+        const product = data;
+        addItem({ product })
+    }
 
     if (loading) return <Loader />
     if (error) return <div>Ha ocurrido un error {error}</div>
@@ -22,6 +30,7 @@ export function ItemDetailContainer() {
                 <Card.Text>
                     {compactString(data.details, 30)}
                 </Card.Text>
+                <Button variant="success" onClick={handleAddProduct}>Agrgar al carrito</Button>
             </Card.Body>
         </Card>
     </div>
