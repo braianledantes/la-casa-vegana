@@ -8,11 +8,10 @@ import { CartContext } from "../../context"
 
 export function ItemDetailContainer() {
     const { id } = useParams();
-    const { data, loading, error } = useMenuItem(id);
+    const { product, loading, error } = useMenuItem(id);
     const { addItem } = useContext(CartContext);
 
     function handleAddProduct() {
-        const product = data;
         addItem({ product });
     }
 
@@ -21,15 +20,15 @@ export function ItemDetailContainer() {
     return (
         <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
             <Card >
-                <Card.Img variant="top" src={data.img} style={{
+                <Card.Img variant="top" src={product.img} style={{
                     width: "90vw",
                     minHeight: "500px",
                     maxWidth: "600px", maxHeight: "600px", objectFit: "cover"
                 }} />
                 <Card.Body>
-                    <Card.Title>{data.name}</Card.Title>
+                    <Card.Title>{product.name}</Card.Title>
                     <Card.Text>
-                        {compactString(data.details, 30)}
+                        {compactString(product.details, 30)}
                     </Card.Text>
                     <Button variant="success" onClick={handleAddProduct}>Agrgar al carrito</Button>
                 </Card.Body>

@@ -8,7 +8,7 @@ import { NavDropdown } from 'react-bootstrap';
 import { useAllCategories } from "../../hooks/useMenu";
 
 export function NavBar() {
-    const { data } = useAllCategories()
+    const { categories } = useAllCategories()
 
     return (
         <Navbar collapseOnSelect expand="md" className="bg-body-tertiary sticky-top z-index-1 shadow">
@@ -30,8 +30,8 @@ export function NavBar() {
                         <NavDropdown title="Menú" id="collapsible-nav-dropdown">
                             <NavDropdown.Item as={Link} to={'/menu'} href='#'>Todo</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            {data.map(category => {
-                                return <NavDropdown.Item key={category} as={Link} to={`/category/${category}`} >{category}</NavDropdown.Item>
+                            {categories.map(category => {
+                                return <NavDropdown.Item key={category.id} as={Link} to={`/category/${category.name}`} >{category.name}</NavDropdown.Item>
                             })}
                         </NavDropdown>
                         <Nav.Link as={Link} to={'/events'} href='#'>Eventos</Nav.Link>

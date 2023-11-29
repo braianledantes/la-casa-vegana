@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 ItemList.propTypes = {
     item: PropTypes.shape({
-        id: PropTypes.number,
+        id: PropTypes.string,
         name: PropTypes.string,
         details: PropTypes.string,
         img: PropTypes.string
