@@ -9,14 +9,7 @@ import {
     where
 } from "firebase/firestore";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDrKK30RiK8NwIqaTp3hfskTOC2-KbvuwU",
-    authDomain: "la-casa-vegana.firebaseapp.com",
-    projectId: "la-casa-vegana",
-    storageBucket: "la-casa-vegana.appspot.com",
-    messagingSenderId: "418996740139",
-    appId: "1:418996740139:web:bebbd063f1b3b1f46d0a6e"
-};
+const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG);
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
