@@ -32,6 +32,10 @@ export async function getCategories() {
 }
 
 export async function getMenuByCategory({ category }) {
+    if (!category) {
+        return getCompleteMenu()
+    }
+
     const q = query(
         collection(db, productsCollectionName),
         where("category", "==", category)
