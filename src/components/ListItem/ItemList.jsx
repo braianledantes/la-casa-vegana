@@ -15,8 +15,8 @@ ItemList.propTypes = {
 
 export function ItemList({ item }) {
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={item.img} style={{height: "250px", objectFit: "cover"}}/>
+        <Card className='item-list'>
+            <Card.Img variant="top" src={item.img} />
             <Card.Body>
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>
