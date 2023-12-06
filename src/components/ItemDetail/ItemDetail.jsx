@@ -1,35 +1,23 @@
-
-import { useContext } from "react"
-import { CartContext } from "../../context"
-import { Card, Button } from "react-bootstrap"
+import { Card, Row } from "react-bootstrap"
 import PropTypes from "prop-types"
+import { AddItemButton } from "../AddItemButton"
+import { Description } from "../Description"
+import { ItemQuantitySelector } from "../ItemQuantitySelector"
 
 ItemDetail.propTypes = {
-    product: PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        details: PropTypes.string,
-        img: PropTypes.string
-    }).isRequired
+    product: PropTypes.object.isRequired
 }
 
 export function ItemDetail({ product }) {
-    const { addItem } = useContext(CartContext)
-
-    function handleAddProduct() {
-        addItem({ product })
-    }
-
     return (
         <Card className="item-details">
-            <Card.Img variant="top" src={product.img} />
+            <Description product={product} />
             <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>
-                    {product.details}
-                </Card.Text>
-                <Button variant="success" onClick={handleAddProduct}>Agregar al carrito</Button>
+                <Row>
+                    <ItemQuantitySelector />
+                    <AddItemButton product={product} />
+                </Row>
             </Card.Body>
-        </Card>
+        </Card >
     )
 }

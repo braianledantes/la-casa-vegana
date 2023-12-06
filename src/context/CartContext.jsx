@@ -10,10 +10,10 @@ export function CartProvider({ children }) {
         children: PropTypes.node.isRequired
     }
 
-    const { listItems, cantItems, addItem } = useCart()
+    const { listItems, addItem, cantItems, currentQuantity, updateCurrentQuantity } = useCart()
 
     return (
-        <CartContext.Provider value={{ listItems, cantItems, addItem }} >
+        <CartContext.Provider value={{ listItems, addItem, cantItems, currentQuantity, updateCurrentQuantity }} >
             {children}
         </CartContext.Provider>
     )

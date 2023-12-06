@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useProduct } from "../../hooks/useMenu"
 import { Loader } from ".."
-import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { ItemDetail } from "../ItemDetail"
 import { ErrorMessage } from "../ErrorMessage"
 
 export function ItemDetailContainer() {
