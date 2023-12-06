@@ -23,3 +23,9 @@
     justify-content: center;
     margin-top: 2rem;
 }
+
+.error {
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+}

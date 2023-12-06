@@ -13,7 +13,7 @@ export function ItemListContainer({ categoryName = "" }) {
 
     const { products, loading, error } = useProductsByCategory(categoryName)
 
-    if (error) return <ErrorMessage error={error} />
+    if (error) return <ErrorMessage />
     if (loading) return <Loader />
     return (
         <Container className="mt-4 mb-4 d-flex flex-row flex-wrap gap-4 justify-content-center">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { getAllCategories, getAllProducts, getProductsByCategory, getProductById } from "../services/apiMenu";
 
+
 export const useAllProducts = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ export const useAllProducts = () => {
         setLoading(true)
         getAllProducts()
             .then(data => setProducts(data))
-            .catch(err => setError(err))
+            .catch(() => setError(true))
             .finally(() => setLoading(false))
     }, [])
 
@@ -26,7 +27,7 @@ export const useProduct = (id) => {
         setLoading(true)
         getProductById(id)
             .then(res => setProduct(res))
-            .catch(err => setError(err))
+            .catch(() => setError(true))
             .finally(() => setLoading(false))
     }, [id])
 
@@ -42,7 +43,7 @@ export const useAllCategories = () => {
         setLoading(true)
         getAllCategories()
             .then(res => setCategories(res))
-            .catch(err => setError(err))
+            .catch(() => setError(true))
             .finally(() => setLoading(false))
     }, [])
 
@@ -58,7 +59,7 @@ export const useProductsByCategory = (category) => {
         setLoading(true)
         getProductsByCategory({ category })
             .then(res => setProducts(res))
-            .catch(err => setError(err))
+            .catch(() => setError(true))
             .finally(() => setLoading(false))
     }, [category])
 
