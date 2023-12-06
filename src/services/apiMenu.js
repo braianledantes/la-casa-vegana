@@ -17,23 +17,23 @@ const db = getFirestore(app);
 const productsCollectionName = "products";
 const categoriesCollectionName = "categories";
 
-export async function getCompleteMenu() {
+export async function getAllProducts() {
     return getDocs(collection(db, productsCollectionName))
         .then(snapshot => {
             return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
         })
 }
 
-export async function getCategories() {
+export async function getAllCategories() {
     return getDocs(collection(db, categoriesCollectionName))
         .then(snapshot => {
             return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
         })
 }
 
-export async function getMenuByCategory({ category }) {
+export async function getProductsByCategory({ category }) {
     if (!category) {
-        return getCompleteMenu()
+        return getAllProducts()
     }
 
     const q = query(
@@ -46,7 +46,7 @@ export async function getMenuByCategory({ category }) {
         })
 }
 
-export async function getMenuItemById(id) {
+export async function getProductById(id) {
     return getDoc(doc(db, productsCollectionName, id))
         .then(snapshot => ({ id: snapshot.id, ...snapshot.data() }))
 }

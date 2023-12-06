@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
-import { getCategories, getCompleteMenu, getMenuByCategory, getMenuItemById } from "../services/apiMenu";
+import { getAllCategories, getAllProducts, getProductsByCategory, getProductById } from "../services/apiMenu";
 
-export const useCompleteMenu = () => {
+export const useAllProducts = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        getCompleteMenu()
+        setLoading(true)
+        getAllProducts()
             .then(data => setProducts(data))
             .catch(err => setError(err))
             .finally(() => setLoading(false))
@@ -16,13 +17,14 @@ export const useCompleteMenu = () => {
     return { products, loading, error }
 }
 
-export const useMenuItem = (id) => {
+export const useProduct = (id) => {
     const [product, setProduct] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        getMenuItemById(id)
+        setLoading(true)
+        getProductById(id)
             .then(res => setProduct(res))
             .catch(err => setError(err))
             .finally(() => setLoading(false))
@@ -37,7 +39,8 @@ export const useAllCategories = () => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        getCategories()
+        setLoading(true)
+        getAllCategories()
             .then(res => setCategories(res))
             .catch(err => setError(err))
             .finally(() => setLoading(false))
@@ -46,14 +49,14 @@ export const useAllCategories = () => {
     return { categories, loading, error }
 }
 
-export const useMenuCategory = (category) => {
+export const useProductsByCategory = (category) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
     useEffect(() => {
         setLoading(true)
-        getMenuByCategory({ category })
+        getProductsByCategory({ category })
             .then(res => setProducts(res))
             .catch(err => setError(err))
             .finally(() => setLoading(false))

@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom"
-import { useMenuItem } from "../../hooks/useMenu"
+import { useProduct } from "../../hooks/useMenu"
 import { Loader } from ".."
 import { ItemDetail } from "../ItemDetail/ItemDetail"
+import { ErrorMessage } from "../Error/Error";
 
 export function ItemDetailContainer() {
     const { id } = useParams();
-    const { product, loading, error } = useMenuItem(id);
+    const { product, loading, error } = useProduct(id);
 
     if (loading) return <Loader />
-    if (error) return (<div>Ha ocurrido un error {error.error}</div>)
+    if (error) return <ErrorMessage error={error} />
     return <ItemDetail product={product} />
 }
