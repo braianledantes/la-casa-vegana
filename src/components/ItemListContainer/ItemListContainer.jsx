@@ -3,7 +3,7 @@ import { useProductsByCategory } from "../../hooks/useMenu"
 import { Container } from "react-bootstrap"
 import { Loader } from "../Loader"
 import { ItemList } from "../ItemList"
-import { ErrorMessage } from "../Error"
+import { ErrorMessage } from "../ErrorMessage"
 
 ItemListContainer.propTypes = {
     categoryName: PropTypes.string
