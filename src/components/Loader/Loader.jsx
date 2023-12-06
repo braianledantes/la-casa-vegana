@@ -1,20 +1,11 @@
-import { ring } from 'ldrs'
+import Spinner from 'react-bootstrap/Spinner';
 
 export function Loader() {
-    ring.register()
-
-    // Default values shown
-    return < >
-        <l-ring
-            size="40"
-            stroke="5"
-            bg-opacity="0"
-            speed="2"
-            color="black"
-            style={{
-                width: "100%",
-                marginTop: "2rem"
-            }}
-        ></l-ring>
-    </ >
+    return (
+        <div className="loader">
+            <Spinner animation="border" role="status" variant="primary">
+                <span className="visually-hidden">Loading...</span>
+            </Spinner>
+        </div>
+    );
 }

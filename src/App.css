@@ -17,3 +17,9 @@
         object-fit: cover;
     }
 }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
