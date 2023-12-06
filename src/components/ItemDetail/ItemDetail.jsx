@@ -5,7 +5,12 @@ import { Card, Button } from "react-bootstrap"
 import PropTypes from "prop-types"
 
 ItemDetail.propTypes = {
-    product: PropTypes.object
+    product: PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+        details: PropTypes.string,
+        img: PropTypes.string
+    }).isRequired
 }
 
 export function ItemDetail({ product }) {

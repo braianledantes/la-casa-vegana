@@ -1,18 +1,19 @@
 .item-details {
-    width: 600px;
+    width: 90%;
+    max-width: 600px;
     margin: 2rem auto;
 
     &>img {
-        height: 600px;
+        aspect-ratio: 1 / 1;
         object-fit: cover;
     }
 }
 
 .item-list {
-    width: 18rem;
+    width: 20rem;
 
     &>img {
-        height: 18rem;
+        aspect-ratio: 1 / 1;
         object-fit: cover;
     }
 }

@@ -1,5 +1,5 @@
 export * from "./CartWidget"
 export * from "./ItemListContainer"
-export * from "./ListItem"
+export * from "./ItemList"
 export * from "./NavBar"
 export * from "./Loader"

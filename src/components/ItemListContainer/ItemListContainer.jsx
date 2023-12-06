@@ -1,18 +1,22 @@
-import { ItemList } from "../ListItem";
-import { Container } from "react-bootstrap";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
+import { useMenuCategory } from "../../hooks/useMenu"
+import { Container } from "react-bootstrap"
+import { Loader } from "../Loader"
+import { ItemList } from "../ItemList"
 
 ItemListContainer.propTypes = {
-    menuList: PropTypes.arrayOf(PropTypes.object).isRequired
+    categoryName: PropTypes.string
 }
 
-export function ItemListContainer({ menuList }) {
+export function ItemListContainer({ categoryName = "" }) {
 
+    const { products, loading, error } = useMenuCategory(categoryName)
+
+    if (error) return <div>Ha ocurrido un error {error.error}</div>
+    if (loading) return <Loader />
     return (
         <Container className="mt-4 mb-4 d-flex flex-row flex-wrap gap-4 justify-content-center">
-            {menuList.map(item => {
-                return <ItemList key={item.id} item={item} />
-            })}
+            {products.map(item => <ItemList key={item.id} item={item} />)}
         </Container>
     )
 }
