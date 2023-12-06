@@ -9,7 +9,7 @@ export function CartWidget() {
         <div>
             <i className="bi bi-cart"></i>
             {' '}
-            <Badge bg="primary">{cantItems}</Badge>
+            <Badge bg="success">{cantItems}</Badge>
         </div>
     )
 }
