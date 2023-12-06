@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../context";
+import { Badge } from "react-bootstrap";
 
 export function CartWidget() {
     const { cantItems } = useContext(CartContext);
@@ -8,7 +9,7 @@ export function CartWidget() {
         <div>
             <i className="bi bi-cart"></i>
             {' '}
-            <span>{cantItems}</span>
+            <Badge bg="primary">{cantItems}</Badge>
         </div>
     )
 }
