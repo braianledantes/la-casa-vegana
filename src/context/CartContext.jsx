@@ -1,8 +1,8 @@
-import React from "react";
-import { useCart } from "../hooks/useCart";
-import PropTypes from "prop-types";
+import React from "react"
+import { useCart } from "../hooks/useCart"
+import PropTypes from "prop-types"
 
-export const CartContext = React.createContext();
+export const CartContext = React.createContext()
 
 export function CartProvider({ children }) {
 
@@ -10,10 +10,10 @@ export function CartProvider({ children }) {
         children: PropTypes.node.isRequired
     }
 
-    const { listItems, cantItems, addItem } = useCart();
+    const { listItems, cantItems, addItem } = useCart()
 
     return (
-        <CartContext.Provider value={{listItems, cantItems, addItem}} >
+        <CartContext.Provider value={{ listItems, cantItems, addItem }} >
             {children}
         </CartContext.Provider>
     )
