@@ -1,31 +1,16 @@
-import { useContext } from "react"
 import { Badge, Button } from "react-bootstrap"
-import { CartContext } from "../../context"
 import PropTypes from "prop-types"
 
 ItemQuantitySelector.propTypes = {
-    maxQuantity: PropTypes.number.isRequired
+    currentQuantity: PropTypes.number.isRequired,
+    incrementCallback: PropTypes.func.isRequired,
+    decrementCallback: PropTypes.func.isRequired
 }
 
-export function ItemQuantitySelector({ maxQuantity }) {
-
-    const { currentQuantity, updateCurrentQuantity } = useContext(CartContext)
-
-    const handleIncrementQuantity = () => {
-        if (currentQuantity < maxQuantity) {
-            updateCurrentQuantity(currentQuantity + 1)
-        } else {
-            updateCurrentQuantity(maxQuantity)
-        }
-    }
-
-    const handleDecrementQuantity = () => {
-        updateCurrentQuantity(currentQuantity - 1)
-    }
-
+export function ItemQuantitySelector({ currentQuantity, incrementCallback, decrementCallback }) {
     return <div className="item-quantity-selector">
-        <Button variant="primary" onClick={handleDecrementQuantity}>-</Button>{' '}
+        <Button variant="primary" onClick={decrementCallback}>-</Button>
         <Badge className="quantity" bg="secondary">{currentQuantity}</Badge>
-        <Button variant="primary" onClick={handleIncrementQuantity}>+</Button>{' '}
+        <Button active variant="primary" onClick={incrementCallback}>+</Button>
     </div>
 }
