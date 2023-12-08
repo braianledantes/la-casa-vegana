@@ -1,23 +1,25 @@
-import { Card, Row } from "react-bootstrap"
-import PropTypes from "prop-types"
+import { Card, ListGroup } from "react-bootstrap"
+
 import { AddItemButton } from "../AddItemButton"
 import { Description } from "../Description"
 import { ItemQuantitySelector } from "../ItemQuantitySelector"
+import { Product } from "../../shapes"
 
-ItemDetail.propTypes = {
-    product: PropTypes.object.isRequired
-}
+ItemDetail.propTypes = Product
 
 export function ItemDetail({ product }) {
     return (
         <Card className="item-details">
             <Description product={product} />
-            <Card.Body>
-                <Row>
-                    <ItemQuantitySelector />
+            <ListGroup className="list-group-flush">
+                <ListGroup.Item>
+                    Cantidad disponible: {product.stock}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                    <ItemQuantitySelector maxQuantity={product.stock}/>
                     <AddItemButton product={product} />
-                </Row>
-            </Card.Body>
+                </ListGroup.Item>
+            </ListGroup>
         </Card >
     )
 }

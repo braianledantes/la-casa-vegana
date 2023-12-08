@@ -7,6 +7,23 @@
         aspect-ratio: 1 / 1;
         object-fit: cover;
     }
+
+    & .add-item-button {
+        width: 100%;
+    }
+}
+
+.item-quantity-selector {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: .5rem;
+    margin-bottom: .5rem;
+
+    &>.quantity {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .item-list {

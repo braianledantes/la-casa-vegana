@@ -6,7 +6,8 @@ Description.propTypes = {
         id: PropTypes.string,
         name: PropTypes.string,
         details: PropTypes.string,
-        img: PropTypes.string
+        img: PropTypes.string,
+        stock: PropTypes.number
     }).isRequired
 }
 
