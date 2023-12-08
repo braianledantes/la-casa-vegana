@@ -1,7 +1,11 @@
 import { compactString } from '../../utils/utils'
 import { Product } from "../../shapes"
+import PropTypes from "prop-types"
 
-ItemCart.propTypes = Product
+ItemCart.propTypes = {
+    product: Product,
+    cant: PropTypes.number.isRequired
+}
 
 export function ItemCart({ product, cant }) {
     return (

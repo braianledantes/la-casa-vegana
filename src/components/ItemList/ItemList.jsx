@@ -1,28 +1,33 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { compactString } from '../../utils/utils';
-import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
+import { ListGroup } from 'react-bootstrap';
+import { Product } from '../../shapes';
 
 ItemList.propTypes = {
-    item: PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        details: PropTypes.string,
-        img: PropTypes.string
-    }).isRequired
+    product: Product
 }
 
-export function ItemList({ item }) {
+export function ItemList({ product }) {
     return (
         <Card className='item-list'>
-            <Card.Img variant="top" src={item.img} />
+            <Card.Img variant="top" src={product.img} />
             <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
+                <Card.Title>{product.name}</Card.Title>
                 <Card.Text>
-                    {compactString(item.details, 30)}
+                    {compactString(product.details, 30)}
                 </Card.Text>
-                <Button variant="primary" as={Link} to={`/menu/${item.id}`}>
+                <ListGroup className="list-group-flush">
+                    <ListGroup.Item>
+                        ${product.price} c/u
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                        Cantidad disponible: {product.stock}
+                    </ListGroup.Item>
+                </ListGroup>
+
+                <Button variant="primary" as={Link} to={`/menu/${product.id}`}>
                     Ver detalles
                 </Button>
             </Card.Body>

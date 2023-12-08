@@ -17,7 +17,7 @@ export function ItemListContainer({ categoryName = "" }) {
     if (loading) return <Loader />
     return (
         <Container className="mt-4 mb-4 d-flex flex-row flex-wrap gap-4 justify-content-center">
-            {products.map(item => <ItemList key={item.id} item={item} />)}
+            {products.map(item => <ItemList key={item.id} product={item} />)}
         </Container>
     )
 }

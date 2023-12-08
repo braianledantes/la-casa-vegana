@@ -7,7 +7,9 @@ import { ItemQuantitySelector } from "../ItemQuantitySelector"
 import { Product } from "../../shapes"
 import Toastify from 'toastify-js'
 
-ItemDetail.propTypes = Product
+ItemDetail.propTypes = {
+    product: Product
+}
 
 export function ItemDetail({ product }) {
 
@@ -47,6 +49,9 @@ export function ItemDetail({ product }) {
         <Card className="item-details">
             <Description product={product} />
             <ListGroup className="list-group-flush">
+                <ListGroup.Item>
+                    ${product.price} c/u
+                </ListGroup.Item>
                 <ListGroup.Item>
                     Cantidad disponible: {product.stock}
                 </ListGroup.Item>
