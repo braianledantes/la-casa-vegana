@@ -36,7 +36,7 @@ export function ItemDetail({ product }) {
                 text: `Se agregaron ${newItem.cant} items al carrito`,
                 duration: 3000,
                 gravity: "top",
-                position: "right",
+                position: "left",
                 style: {
                     background: "rgb(25, 135, 84)",
                     borderRadius: "5px"
