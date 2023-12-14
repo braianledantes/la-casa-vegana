@@ -6,7 +6,8 @@ import {
     doc,
     getDoc,
     query,
-    where
+    where,
+    addDoc
 } from "firebase/firestore";
 
 const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG);
@@ -16,6 +17,7 @@ const db = getFirestore(app);
 
 const productsCollectionName = "products";
 const categoriesCollectionName = "categories";
+const ordersCollectionName = "orders";
 
 export async function getAllProducts() {
     return getDocs(collection(db, productsCollectionName))
@@ -49,4 +51,10 @@ export async function getProductsByCategory({ category }) {
 export async function getProductById(id) {
     return getDoc(doc(db, productsCollectionName, id))
         .then(snapshot => ({ id: snapshot.id, ...snapshot.data() }))
+}
+
+export async function createOrder({ order }) {
+    const ordersCollection = collection(db, ordersCollectionName)
+    addDoc(ordersCollection, order)
+        .then(({ id }) => id)
 }

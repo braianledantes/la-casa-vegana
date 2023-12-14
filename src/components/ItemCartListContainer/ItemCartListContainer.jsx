@@ -4,11 +4,11 @@ import { ItemCart } from "../ItemCart/ItemCart"
 
 export function ItemCartListContainer() {
 
-    const { listItems } = useContext(CartContext)
+    const { order } = useContext(CartContext)
 
     return (
         <div className="cart-list">
-            {listItems.map(({ product, cant }) =>
+            {order.items.map(({ product, cant }) =>
                 <ItemCart key={product.id} product={product} cant={cant} />
             )}
         </div>
