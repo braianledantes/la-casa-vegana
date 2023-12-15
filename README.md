@@ -7,7 +7,7 @@ La app ya se encuentra publicada en modo de prueba en Netlify para hechar un vis
 
 ## Rutas de la App
 
-- **Inicio**: En este apartado se pueden los todos los productos que ofrece el ecomerse.
+- **Inicio**: En este apartado se pueden los todos los productos que ofrece el e-commerce.
 - **Menú**: Aquí se pueden ver los productos por categoría además de también poder ver todos los productos.
 - **Eventos**: Próximamente se podrá ver los eventos que realizará el emprendimiento.
 - **Contactados**: Donde el usuario va a poder contactarse con la empresa.
@@ -15,3 +15,4 @@ La app ya se encuentra publicada en modo de prueba en Netlify para hechar un vis
 
 ## Librerias adicionales
 - [Toastify-js](https://apvarun.github.io/toastify-js/ "Toastify-js"): Para mostrar un toast indicando si se agregó un producto al carrito o no.
+- [react-bootstrap](https://react-bootstrap.netlify.app/ "react-bootstrap"): Para los componentes React de Bootstrap.
