@@ -6,7 +6,7 @@ function createEmptyOrder() {
             phone: ""
         },
         items: [],
-        cant: 0,
+        quantity: 0,
         total: 0.0,
         state: "sin enviar"
     }

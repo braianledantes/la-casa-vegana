@@ -12,31 +12,48 @@ export const useCart = () => {
     const [sendingOrder, setSendingOrder] = useState(false)
     const [sendingError, setError] = useState(false)
 
-    const addItem = ({ product, cant }) => {
-        let newItem = { product, cant }
-        if (cant >= INITIAL_QUANTITY) {
+    const addItem = ({ product, quantity }) => {
+        // valor que se mostrara en el toast
+        let quantityAdded = 0
+
+        if (quantity >= INITIAL_QUANTITY) {
+            let newItem = { product, quantity }
+
             const arrItems = order.items
 
             const item = arrItems.find(i => i.product.id == product.id)
 
-            if (item) {
-                item.cant += cant
-            } else {
+
+            if (item) { // si ya esta el producto en el pedido
+                // si la nueva cantidad supera el stock, solo deja la disponible
+                if ((item.quantity + quantity) > product.stock) {
+                    quantityAdded = product.stock - item.quantity
+                    item.quantity = product.stock
+                } else {
+                    quantityAdded = quantity
+                }
+                item.quantity += quantityAdded
+            } else { // si no esta el producto en el pedido
+                // si la cantidad supera el stock se deja solo lo disponible
+                if (quantity > product.stock) { 
+                    quantityAdded = product.stock
+                    newItem.quantity = quantityAdded
+                } else {
+                    quantityAdded = quantity
+                }
                 arrItems.push(newItem)
             }
 
             const newOrder = {
                 ...order,
-                total: order.total + (product.price * cant),
-                cant: order.cant + cant
+                total: order.total + (product.price * quantity),
+                quantity: arrItems.reduce((acc, i) => acc + i.quantity, 0)
             }
             saveCurrentOrder(newOrder)
             setOrder(newOrder)
-
-        } else {
-            newItem = undefined
         }
-        return newItem
+
+        return quantityAdded
     }
 
     const sendOrder = () => {
@@ -46,24 +63,23 @@ export const useCart = () => {
             state: "generada",
             date: new Date()
         }
-        
+
         // se validan las condiciones y sube el pedido
         if (validateBuyer(buyer) && newOrder.items) {
             setSendingOrder(true)
             setError(false)
 
             createOrder({ order: newOrder })
-            .then(() => {
-                removeCurrentOrder()
-                setOrder(getCurrentOrder())
-            })
-            .catch((err) => {
-                console.error(err);
-                setError(true)
-            })
-            .finally(() => {
-                setSendingOrder(false)
-            })
+                .then(() => {
+                    removeCurrentOrder()
+                    setOrder(getCurrentOrder())
+                })
+                .catch(() => {
+                    setError(true)
+                })
+                .finally(() => {
+                    setSendingOrder(false)
+                })
         }
     }
 

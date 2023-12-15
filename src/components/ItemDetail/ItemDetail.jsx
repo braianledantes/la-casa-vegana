@@ -29,16 +29,27 @@ export function ItemDetail({ product }) {
     }
 
     const handleAddItem = () => {
-        const newItem = addItem({ product, cant: quantity })
+        const quantityAdded = addItem({ product, quantity })
 
-        if (newItem) {
+        if (quantityAdded > 0) {
             Toastify({
-                text: `Se agregaron ${newItem.cant} items al carrito`,
+                text: `Se agregaron ${quantityAdded} items al carrito`,
                 duration: 3000,
                 gravity: "top",
                 position: "left",
                 style: {
                     background: "rgb(25, 135, 84)",
+                    borderRadius: "5px"
+                }
+            }).showToast();
+        } else {
+            Toastify({
+                text: `No se agregó producto, supera el stock`,
+                duration: 3000,
+                gravity: "top",
+                position: "left",
+                style: {
+                    background: "rgb(135, 52, 61)",
                     borderRadius: "5px"
                 }
             }).showToast();

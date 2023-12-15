@@ -35,7 +35,7 @@ export function BuyerForm() {
     }, [email1, email2])
 
     const submit = () => {
-        if (emailsInvalid) {
+        if (!emailsInvalid) {
             sendOrder()
         }
     }
@@ -72,7 +72,7 @@ export function BuyerForm() {
             </FloatingLabel>
 
             <Button variant="primary" type="button" onClick={submit}>
-                Enviar pedido
+                Realizar compra
             </Button>
         </Form>
     )

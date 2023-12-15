@@ -1,8 +1,17 @@
-# React + Vite
+![](https://raw.githubusercontent.com/braianledantes/la-casa-vegana/8aec97795ccfb485971571e8679e92a465ba6db2/src/assets/logo.svg)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# La Casa Vegana
 
-Currently, two official plugins are available:
+La Casa Vegana se trata de un emprendimiento que ofrece productos veganos. En esta App se pretende que los clientes puedan solicitar su comida enviando el pedido con los productos que desean, su nombre, un correo electrónico y su teléfono para que sean contactados.
+La app ya se encuentra publicada en modo de prueba en Netlify para hechar un vistazo [aquí](https://main--reliable-axolotl-53558d.netlify.app/ "aquí").
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Rutas de la App
+
+- **Inicio**: En este apartado se pueden los todos los productos que ofrece el ecomerse.
+- **Menú**: Aquí se pueden ver los productos por categoría además de también poder ver todos los productos.
+- **Eventos**: Próximamente se podrá ver los eventos que realizará el emprendimiento.
+- **Contactados**: Donde el usuario va a poder contactarse con la empresa.
+- **Carrito**: Se podrán ver los productos que se van agregando al carrito y también ingresar los datos del usuario para poder enviar el pedido.
+
+## Librerias adicionales
+- [Toastify-js](https://apvarun.github.io/toastify-js/ "Toastify-js"): Para mostrar un toast indicando si se agregó un producto al carrito o no.
