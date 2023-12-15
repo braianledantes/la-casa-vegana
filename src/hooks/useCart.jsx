@@ -17,13 +17,10 @@ export const useCart = () => {
         let quantityAdded = 0
 
         if (quantity >= INITIAL_QUANTITY) {
-            let newItem = { product, quantity }
-
             const arrItems = order.items
-
+            
             const item = arrItems.find(i => i.product.id == product.id)
-
-
+            
             if (item) { // si ya esta el producto en el pedido
                 // si la nueva cantidad supera el stock, solo deja la disponible
                 if ((item.quantity + quantity) > product.stock) {
@@ -31,17 +28,16 @@ export const useCart = () => {
                     item.quantity = product.stock
                 } else {
                     quantityAdded = quantity
+                    item.quantity += quantityAdded
                 }
-                item.quantity += quantityAdded
             } else { // si no esta el producto en el pedido
                 // si la cantidad supera el stock se deja solo lo disponible
                 if (quantity > product.stock) { 
                     quantityAdded = product.stock
-                    newItem.quantity = quantityAdded
                 } else {
                     quantityAdded = quantity
                 }
-                arrItems.push(newItem)
+                arrItems.push({ product, quantity: quantityAdded })
             }
 
             const newOrder = {
