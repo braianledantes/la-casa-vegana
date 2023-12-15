@@ -43,6 +43,7 @@
 
 .item-cart {
     min-width: 400px;
+    max-height: 150px;
     display: grid;
     gap: 1rem;
     grid-template-columns: 2fr 5fr;
@@ -52,6 +53,7 @@
     &>.image {
         border-radius: 1rem 0 0 1rem;
         width: 100%;
+        max-height: 150px;
         aspect-ratio: 1 / 1;
         object-fit: cover;
     }

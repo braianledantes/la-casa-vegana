@@ -1,9 +1,9 @@
 function createEmptyOrder() {
     return {
         buyer: {
-            name: undefined,
-            email: undefined,
-            phone: undefined
+            name: "",
+            email: "",
+            phone: ""
         },
         items: [],
         cant: 0,
@@ -22,5 +22,6 @@ export function saveCurrentOrder(order) {
 }
 
 export function removeCurrentOrder() {
-    window.localStorage.setItem("currentOrder", createEmptyOrder())
+    const newOrder = createEmptyOrder()
+    window.localStorage.setItem("currentOrder", JSON.stringify(newOrder))
 }
