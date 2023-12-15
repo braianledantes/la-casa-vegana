@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { useProductsByCategory } from "../../hooks/useMenu"
+import { useProductsByCategory } from "../../hooks/useProducts"
 import { Container } from "react-bootstrap"
 import { Loader } from "../Loader"
 import { ItemList } from "../ItemList"

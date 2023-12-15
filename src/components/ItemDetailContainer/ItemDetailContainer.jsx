@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useProduct } from "../../hooks/useMenu"
+import { useProduct } from "../../hooks/useProducts"
 import { Loader } from ".."
 import { ItemDetail } from "../ItemDetail"
 import { ErrorMessage } from "../ErrorMessage"

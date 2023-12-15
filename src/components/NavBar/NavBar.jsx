@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
-import { useAllCategories } from "../../hooks/useMenu";
+import { useAllCategories } from "../../hooks/useProducts";
 
 export function NavBar() {
     const { categories } = useAllCategories()

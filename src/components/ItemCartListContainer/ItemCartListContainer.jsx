@@ -9,11 +9,11 @@ export function ItemCartListContainer() {
     return (
         <div className="cart-list mb-3">
             {order.quantity > 0 &&
-                <div>
+                <>
                     {order.items.map(({ product, quantity }) =>
                         <ItemCart key={product.id} product={product} quantity={quantity} />
                     )}
-                </div>}
+                </>}
             {order.quantity <= 0 &&
                 <p>La lista de productos está vacía 😔</p>}
         </div>
